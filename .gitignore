@@ -1,0 +1,10 @@
+# Generated data
+articles
+articles.tsv
+grch38.tsv
+
+# OpenAI API key
+api_key.txt
+
+# Virtual environment
+venv

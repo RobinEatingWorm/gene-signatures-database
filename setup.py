@@ -184,7 +184,7 @@ def get_article_text(max_processes: int) -> None:
 
 def main() -> None:
     """
-    Run all setup functions in order.
+    Run setup functions as needed.
     """
 
     # Run queries from 1951 (date of the first gene set/signature article) to next year
@@ -196,8 +196,8 @@ def main() -> None:
     # Alternate function to get PMCIDs
     # get_pmcids_batch(500, 0)
 
-    # Get a sample of articles
-    get_article_text(500)
+    # Get all OA articles
+    # get_article_text(500)
 
 
 if __name__ == "__main__":

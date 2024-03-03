@@ -9,7 +9,7 @@ import os
 import sys
 import time
 
-with open("params.json") as file:
+with open("settings/params.json") as file:
     params = json.load(file)
     articles_dir = params["articles"]["dir"]
     articles_file = params["articles"]["file"]

@@ -58,7 +58,7 @@ def in_training_set(filename: str) -> tuple[bool, bool]:
     in_targets = filename in set(targets.keys())
 
     # Return both values
-    return (in_inputs, in_targets)
+    return in_inputs, in_targets
 
 
 def main() -> None:

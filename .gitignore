@@ -1,7 +1,11 @@
 # Generated data
-articles
-articles.tsv
-grch38.tsv
+data
+
+# Training set
+training/inputs
+
+# Extra set
+training/extra/inputs
 
 # OpenAI API key
 api_key.txt

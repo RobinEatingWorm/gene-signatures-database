@@ -9,6 +9,7 @@
         "names": "external_gene_name",
         "synonyms": "external_synonym"
     },
+    "prompts": "prompts",
     "training": {
         "extra": {
             "inputs": "training/extra/inputs",

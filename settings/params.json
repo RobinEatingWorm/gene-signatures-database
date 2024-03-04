@@ -1,0 +1,20 @@
+{
+    "articles": {
+        "dir": "data/articles",
+        "file": "data/articles.tsv"
+    },
+    "email": "gavin.pu@mail.utoronto.ca",
+    "genes": {
+        "file": "data/grch38.tsv",
+        "names": "external_gene_name",
+        "synonyms": "external_synonym"
+    },
+    "training": {
+        "extra": {
+            "inputs": "training/extra/inputs",
+            "targets": "training/extra/targets.json"
+        },
+        "inputs": "training/inputs",
+        "targets": "training/targets.json"
+    }
+}

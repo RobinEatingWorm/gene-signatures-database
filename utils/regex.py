@@ -21,7 +21,7 @@ def generate_gene_regex(filename: str, column: str) -> str:
     gene_list = "\n".join(gene_list)
 
     # Find special characters in the gene list
-    specials = re.finditer(r"[.^$*+?{}\\[\]?|()]", gene_list)
+    specials = re.finditer(r"[.^$*+?{}\\[\]|()]", gene_list)
 
     # Build a regular expression by escaping all special characters
     gene_regex = ""

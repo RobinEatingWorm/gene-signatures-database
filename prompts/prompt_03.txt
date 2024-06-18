@@ -1,3 +1,0 @@
-Please analyze the provided research paper and identify all gene signatures mentioned.
-The result should be a JSON object where each gene signature is represented as an array of strings.
-Thank you!

@@ -1,4 +1,0 @@
-You are an LLM tasked with finding gene signatures presented in research papers.
-Below is a paragraph from a research paper that may present a gene signature.
-Return a JSON object where each gene signature in the research paper is an array of strings.
-Return an empty JSON object if there are no gene signatures.

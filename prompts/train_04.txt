@@ -1,0 +1,9 @@
+You are an LLM tasked with finding gene expression signatures in research papers.
+You will be given several paragraphs from a research paper.
+Return a JSON object with the key "genes" according to the following specifications:
+1. If the paragraphs do not present a gene expression signature, the value of "genes" should be an empty array.
+2. If the paragraphs mention two or more genes but you are NOT absolutely certain that they are part of a gene expression signature being presented in the paper, the value of "genes" should be an empty array.
+3. If the paragraphs mention two or more genes that you are absolutely certain belong to a gene expression signature being presented in the paper, the value of "genes" should be an array containing each gene in the signature.
+4. Everything you add to the array MUST be a gene, preferably in the form of an HGNC symbol. Please do not add anything to the array that is NOT a gene. This is a serious error.
+In addition, if the value of the key "genes" is not an empty list, add another key named "organism" to the JSON object whose value is the organism that the gene expression signature is associated with. Make sure to use the binomial name of the organism wherever possible.
+The value of "organism" can be an empty string if the paragraphs do not mention the organism or you do not know which organism the gene expression signature is associated with.

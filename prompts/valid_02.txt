@@ -1,0 +1,5 @@
+You are an LLM tasked with verifying if an excerpt from research article does NOT contain a gene expression signature.
+You will be presented with discontinuous paragraphs from a research article.
+Return a JSON object with a key named "valid".
+If you are completely certain that the research article does NOT contain a gene expression signature, set this field to true.
+Otherwise, set this to false.

@@ -9,27 +9,31 @@ with open("settings/params.json") as file:
     prompts_dir = params["prompts"]
 
 
-def get_prompt(prompt_number: int) -> str:
+def get_prompt(prompt_number: int, type: str) -> str:
     """
     Read a prompt from a file and format it correctly.
     :param prompt_number: The number in the prompt filename.
+    :param type: The type of prompt. This can either be "train" or "valid".
     :return: A string containing the formatted rompt.
     """
 
     # Read all lines from the file
-    with open(f"{prompts_dir}/prompt_{prompt_number:02d}.txt") as file:
+    with open(f"{prompts_dir}/{type}_{prompt_number:02d}.txt") as file:
         prompt = file.readlines()
 
     # Replace newlines with spaces
     return " ".join([line.strip() for line in prompt])
 
 
-def get_relevant_lines(article_filename: str, gene_regex: str) -> list[str]:
+def get_relevant_lines(article_filename: str, gene_regex: str,
+                       threshold: int) -> list[str]:
     """
     Get all lines in an article (excluding references) containing any gene
     symbols specified in a regular expression.
     :param article_filename: The filename of the article.
     :param gene_regex: A regular expression that matches gene symbols.
+    :param threshold: The minimum number of gene symbols in each line to be
+    returned.
     :return: A list of lines with gene symbols matching the regular expression.
     """
 
@@ -40,11 +44,11 @@ def get_relevant_lines(article_filename: str, gene_regex: str) -> list[str]:
     # Initialize a list to store relevant lines
     article_relevant = []
 
-    # Find lines with at least two different gene symbols excluding references
+    # Find lines excluding references
     for line in article:
         if line == "==== Refs\n":
             break
-        if len(set(re.findall(gene_regex, line))) >= 2:
+        if len(set(re.findall(gene_regex, line))) >= threshold:
             article_relevant.append(line)
     return article_relevant
 

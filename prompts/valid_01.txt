@@ -1,5 +1,0 @@
-You are an LLM tasked with verifying whether a gene expression signature is mentioned in excerpts from research articles.
-You will be presented with discontinuous paragraphs from a research article.
-Return a JSON object with a key named "valid".
-If you are completely certain that the gene expression signature with genes {genes} is present in the research article, set this field to true.
-Otherwise, set this to false.

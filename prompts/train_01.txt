@@ -1,3 +1,0 @@
-Below are paragraphs from a research paper that may present a gene signature.
-Return a JSON object with the key "genes" containing each gene signature in the research paper as an array of strings.
-Return a JSON object with the key "genes" containing an empty array if there are no gene signatures.

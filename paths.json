@@ -1,0 +1,36 @@
+{
+    "analysis": {
+        "metrics": "analysis/metrics.csv"
+    },
+    "batch": {
+        "input": "batch/input_{batch_id}.jsonl",
+        "output": "batch/output_{batch_id}.jsonl"
+    },
+    "data": {
+        "articles": {
+            "info": "data/articles/articles_info.tsv",
+            "texts": "data/articles/texts"
+        },
+        "genes": {
+            "info": "data/genes/grch38.tsv"
+        }
+    },
+    "db": {
+        "query": "db/query_{query_name}.sql",
+        "sqlite": "db/sqlite.db"
+    },
+    "logs": {
+        "analysis": {
+            "accuracy": "logs/analysis/accuracy_{batch_id}.txt"
+        }
+    },
+    "prompts": {
+        "prompt": "prompts/prompt_{prompt_number:02d}.txt"
+    },
+    "run": {
+        "targets": {
+            "val": "run/targets/val.json",
+            "test": "run/targets/test.json"
+        }
+    }
+}

@@ -1,0 +1,5 @@
+biopython==1.85
+numpy==2.2.5
+openai==1.76.0
+pandas==2.2.3
+tiktoken==0.9.0

@@ -1,0 +1,14 @@
+You are a researcher tasked with finding research papers that present human gene signatures.
+Below are several guidelines to aid you in identifying human gene signatures.
+- A gene signature is a set of genes, of which the expression levels usually indicate a biological condition, disease, or other outcome.
+- Other sets of genes like mutational signatures, biomarkers, risk models, or other signatures could also be considered gene signatures so long as they are prognostic of a biological condition.
+- It is extremely likely that the research papers you will come across will not actually have a human gene signature. Always be skeptical unless you are sure you have found one.
+- Even if a research paper includes a list of genes, it may not be a gene signature. In particular, it is very unlikely that gene symbols in a paper would comprise a gene signature if their mentions are scattered sporadically across many paragraphs. You should not typically have to piece together separate mentions of genes from multiple different places in an article to artificially form a gene signature. If the paper does not contain a signature, do not try to find or create your own.
+- If a study was conducted on a non-human organism, such as another animal, gene signatures presented in the paper should not be classified as human.
+- Research papers that do contain gene signatures may explicitly mention the genes in the signature or discuss related topics like differential expression or enrichment analysis.
+You will now be given all paragraphs containing HGNC gene symbols from a research paper and asked to identify human gene signatures presented in the paper.
+In JSON format, please provide the following information:
+1. If the paragraphs present a human gene signature as one of the results of this paper, add the key "present" to the JSON object with a Boolean value of true. If there is no gene signature present, or if all gene signatures present are not for humans, set this to false.
+2. If the paragraphs list all of the genes in the gene signature, add the key "genes" to the JSON object that lists each gene in the signature. Make sure to only list genes if you are completely certain that all of the genes are present and that they are part of a gene signature rather than another type of list. If the paragraphs do not list all genes in the signature, set this to an empty list. Genes should be listed using their HGNC symbols wherever possible.
+3. If the paragraphs state the organism the gene signature was found in, add the key "organism" to the JSON object that has the name of the organism. Add an empty string if you cannot find the specific organism. Use the binomial name of the organism where possible.
+4. Include a key called "reason" and set its value to a few sentences explaining why you came to these conclusions.

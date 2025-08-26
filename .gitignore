@@ -1,14 +1,23 @@
-# Generated data
+# Generated files
+analysis/metrics.csv
+batch
 data
+logs
 
-# Training set
-training/inputs
+# Database
+db/sqlite.db
 
-# Extra set
-training/extra/inputs
-
-# OpenAI API key
-api_key.txt
+# User-specific settings
+settings.json
 
 # Virtual environment
 venv
+
+# Compiled Modules
+__pycache__
+
+# AWS CLI
+aws-cli
+
+# Other
+_*

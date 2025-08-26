@@ -1,50 +1,35 @@
-import pandas as pd
+import numpy as np
 
 import re
 
 
-def generate_gene_regex(filename: str, column: str) -> str:
+def create_genes_regex(genes: np.ndarray) -> str:
     """
-    Generate a regular expression containing genes from a TSV.
-    :param filename: The filename of the TSV.
-    :param column: The column label of a column containing genes.
-    :return: A regular expression that matches genes present in the TSV column.
-    """
-
-    # Load the TSV and get the column
-    gene_list = pd.read_csv(filename, sep="\t", dtype=object)[column]
-
-    # Remove empty values and duplicates
-    gene_list = gene_list.dropna().unique()
-
-    # Join genes together using newlines
-    gene_list = "\n".join(gene_list)
-
-    # Find special characters in the gene list
-    specials = re.finditer(r"[.^$*+?{}\\[\]|()]", gene_list)
-
-    # Build a regular expression by escaping all special characters
-    gene_regex = ""
-    index_prev = 0
-    index_curr = 0
-    for special in specials:
-        index_curr = special.start()
-        gene_regex += gene_list[index_prev:index_curr] + "\\"
-        index_prev = special.start()
-    gene_regex += gene_list[index_curr:]
-
-    # Replace newlines with the special character "|"
-    return re.sub(r"\n", r"|", gene_regex)
-
-
-def cap_gene_regex(gene_regex: str) -> str:
-    """
-    Add additional specifications to a regular expression with genes to ensure
-    that genes matched are not coincidentally parts of other words.
-    :param gene_regex: A regular expression that matches genes generated from
-    generate_gene_regex().
-    :return: The same regular expression with additional specifications.
+    Create a regular expression that matches gene names without matching parts of words that coincidentally contain gene
+    names.
+    :param genes: An array of gene names and/or synonyms.
+    :return: A regular expression.
     """
 
-    # Do not match Unicode word character directly before or after gene names
-    return r"(?:\A|\W)(" + gene_regex + r")(?:\Z|\W)"
+    # Join gene names together using tabs
+    genes_regex = '\t'.join(genes)
+
+    # Escape all special characters
+    genes_regex = re.sub(r'[.^$*+?{}\\[\]|()]', r'\\\g<0>', genes_regex)
+
+    # Replace tabs with the special character '|'
+    genes_regex = re.sub(r'\t', r'|', genes_regex)
+
+    # Do not match Unicode word characters directly beside gene names
+    return r'(?:\A|\W)(' + genes_regex + r')(?:\Z|\W)'
+
+
+def get_pmcid_from_filename(filename: str) -> str:
+    """
+    Extract an article's PMCID from its filename.
+    :param filename: The filename of the article.
+    :return: The PMCID of the article.
+    """
+
+    # Use a regex to find the PMCID
+    return re.search(r'^(?P<pmcid>PMC[0-9]*)\.txt$', filename).group('pmcid')
